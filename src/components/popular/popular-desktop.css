@@ -1,0 +1,31 @@
+.popular {
+  @apply top-48;
+}
+
+.popular_label {
+  @apply flex w-full mb-6;
+}
+
+.popular_label__title {
+  @apply w-full border-blue-800 text-2xl text-gray-700 border-b-4;
+}
+
+.popular_item {
+  @apply mb-10;
+}
+
+.popular_item__label {
+  @apply w-1/6 lg:text-center;
+}
+
+.popular_item__label___number {
+  @apply text-3xl font-light text-gray-300;
+}
+
+.popular_item__desc {
+  @apply w-full text-gray-400;
+}
+
+.popular_item__desc___title {
+  @apply text-sm font-semibold leading-6 text-gray-700 line-clamp-3;
+}

@@ -1,0 +1,43 @@
+.feature {
+  @apply w-full my-4 flex;
+}
+
+.feature_main {
+  @apply flex flex-col w-2/5;
+}
+
+.feature_main__content {
+  @apply absolute z-20 bottom-0 left-0 flex flex-col px-3 py-3;
+}
+
+.feature_main__content___date {
+  @apply text-white text-xs py-2;
+}
+
+.feature_main__content___title {
+  @apply font-medium text-white text-base line-clamp-2;
+}
+
+.feature_main__backdrop {
+  @apply w-full h-full bg-gray-600 absolute z-10 rounded-xl border-none opacity-30;
+}
+
+.feature_main__image {
+  @apply rounded-xl h-full w-full align-middle border-none object-cover;
+}
+
+.feature_list {
+  @apply flex flex-col w-3/5 pl-5 divide-y divide-gray-500 space-y-5;
+}
+
+.feature_list__item {
+  @apply flex flex-col px-3 py-3;
+}
+
+.feature_list__item___date {
+  @apply text-xs py-2 text-gray-600;
+}
+
+.feature_list__item___title {
+  @apply text-base text-gray-800 line-clamp-3;
+}

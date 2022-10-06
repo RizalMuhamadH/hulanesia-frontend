@@ -1,0 +1,27 @@
+.header {
+  @apply fixed z-50 w-full;
+}
+
+.navbar-main {
+  @apply navbar max-w-screen-lg mx-auto;
+}
+
+.navbar-main__social {
+  @apply navbar-start my-auto hidden lg:block;
+}
+
+.social-item {
+  @apply mt-2 text-left text-lg;
+}
+
+.navbar-item {
+  @apply btn btn-ghost btn-sm rounded-btn hover:text-orange-500;
+}
+
+.navbar-bg {
+  @apply bg-main-blue border-b-4 border-b-orange-500;
+}
+
+.navbar-container {
+  @apply navbar container mb-2 text-neutral-content mx-auto flex justify-center;
+}

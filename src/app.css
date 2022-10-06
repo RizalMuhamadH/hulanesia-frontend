@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.social-facebook {
+  @apply text-facebook hover:text-white hover:bg-facebook px-2.5 py-1 rounded-full;
+}
+
+.social-twitter {
+  @apply text-twitter hover:text-white hover:bg-twitter px-2.5 py-1.5 rounded-full;
+}
+
+.social-instagram {
+  @apply text-instagram hover:text-white hover:bg-instagram px-2.5 py-1.5 rounded-full;
+}
+
+.social-youtube {
+  @apply text-youtube hover:text-white hover:bg-youtube px-2.5 py-2 rounded-full;
+}
+
+.more {
+  @apply inline-block border font-semibold border-main-blue px-5 py-2 text-main-blue rounded-full hover:bg-main-blue hover:text-white;
+}
+
+.lozad {
+  opacity: 0;
+}
+
+.lozad.fade {
+  opacity: 1;
+  transition: opacity 300ms;
+}

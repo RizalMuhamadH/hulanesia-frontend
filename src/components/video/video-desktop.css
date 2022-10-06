@@ -1,0 +1,15 @@
+.video-item {
+  @apply w-3/5 mr-4 flex flex-col border rounded-lg border-gray-500;
+}
+
+.video-item__box {
+  @apply text-gray-700 line-clamp-3 hover:text-orange-500 hover:cursor-pointer;
+}
+
+.video-item__image {
+  @apply hover:grow hover:shadow-lg w-full rounded-t-lg h-56 object-cover;
+}
+
+.video-item__desc {
+  @apply pt-3 px-3 flex flex-col;
+}

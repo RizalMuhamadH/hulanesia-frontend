@@ -1,0 +1,60 @@
+import { qwikCity } from "@builder.io/qwik-city/middleware/node";
+import express from "express";
+import { fileURLToPath } from "url";
+import { join } from "path";
+import render from "./entry.ssr";
+import * as dotenv from "dotenv";
+import { initialCache } from "./redis/cache";
+dotenv.config();
+
+initialCache();
+
+// Directories where the static assets are located
+const distDir = join(fileURLToPath(import.meta.url), "..", "..", "dist");
+const buildDir = join(distDir, "build");
+
+// Create the Qwik City express middleware
+const { router, notFound } = qwikCity(render);
+
+// Create the express server
+// https://expressjs.com/
+const app = express();
+
+app.use((req, res, next) => {
+  console.log(req.headers["user-agent"]);
+
+  // const mobile = new Detection().mobileDetect(req.headers['user-agent'] ?? "")
+  // console.log(mobile);
+
+  // const token = req.header("authorization");
+  // console.log(token);
+  // if(res.status(404)){
+  //   console.log(res.statusMessage);
+  //   console.log(res.statusCode);
+
+  //   res.status(404).send('<h1> Page not found </h1>')
+  //   // res.render('404', { url: req.url });
+  //   // return;
+  // }
+
+  // console.log(res.json());
+
+  next();
+});
+
+// Static asset handlers
+// https://expressjs.com/en/starter/static-files.html
+app.use(`/build`, express.static(buildDir, { immutable: true, maxAge: "1y" }));
+app.use(express.static(distDir, { redirect: false }));
+
+// Use Qwik City's page and endpoint request handler
+app.use(router);
+
+// Use Qwik City's 404 handler
+app.use(notFound);
+
+// Start the express server
+app.listen(3000, () => {
+  /* eslint-disable */
+  console.log(`http://localhost:3000/`);
+});

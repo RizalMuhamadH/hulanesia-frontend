@@ -1,0 +1,23 @@
+.headline-show_content {
+  @apply absolute z-20 bottom-0 left-0 flex flex-col px-3 py-3;
+}
+
+.headline-show_content__title {
+  @apply font-medium text-white md:text-2xl text-lg line-clamp-2;
+}
+
+.headline-show_content__date {
+  @apply text-white text-xs py-2;
+}
+
+.headline-show_backdrop {
+  @apply h-full w-full bg-gray-600 absolute z-10 border-none opacity-30;
+}
+
+.headline-show_image {
+  @apply w-full h-96 align-middle border-none object-cover;
+}
+
+.flicking-panel.active {
+  @apply border-b-4 border-blue-900;
+}
