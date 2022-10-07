@@ -47,7 +47,7 @@ export default component$(() => {
               <RecentDesktop q:slot="main" articles={val.recent[2]} />
               <PopularDesktop q:slot="side" popular={val.popular} />
             </Desktop>
-            <FooterDesktop categories={val.categories}/>
+            <FooterDesktop categories={val.categories} />
           </>
         )}
       />
@@ -55,11 +55,58 @@ export default component$(() => {
   );
 });
 
-export const head: DocumentHead = {
-  title: "Welcome to Qwik",
+export const head: DocumentHead<any> = ({ data }) => {
+  return {
+    title: "Welcome to Qwik",
+    meta: [
+      {
+        name: "description",
+        content: process.env.WEBSITE_DESCRIPTION,
+      },
+      {
+        property: "og:type",
+        content: "article",
+      },
+      {
+        property: "og:url",
+        content: data.url,
+      },
+      {
+        property: "og:description",
+        content: process.env.WEBSITE_DESCRIPTION,
+      },
+      {
+        property: "og:image",
+        content: process.env.WEBSITE_LOGO
+      },
+      {
+        property: "og:site_name",
+        content: process.env.WEBSITE_NAME
+      }
+    ],
+    styles: [
+      {
+        style: JSON.stringify([
+          {
+            published_date: "Not Available",
+            rubrik: "Not Available",
+            penulis: "Not Available",
+            editor: "Not Available",
+            id: "Not Available",
+            source: "Not Available",
+            // "topic": "Not Available",
+            tag: "Not Available",
+            penulis_id: "Not Available",
+            editor_id: "Not Available",
+          },
+        ]),
+        key: "dataLayer",
+      },
+    ],
+  };
 };
 
-export const onGet: RequestHandler<any> = async ({ request }) => {
+export const onGet: RequestHandler<any> = async ({ url, request }) => {
   console.log(request.headers.get("user-agent"));
 
   const md = new MobileDetect(request.headers.get("user-agent") ?? "");
@@ -79,6 +126,7 @@ export const onGet: RequestHandler<any> = async ({ request }) => {
     editorChoice: editorChoice,
     videos: videos,
     popular: popular,
+    url: url,
     device: {
       mobile: md.mobile() ?? "",
       phone: md.phone() ?? "",

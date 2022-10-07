@@ -55,9 +55,18 @@ export const RouterHead = component$(() => {
         <link {...l} />
       ))}
 
-      {head.styles.map((s) => (
-        <style {...s.props} dangerouslySetInnerHTML={s.style} />
-      ))}
+      {head.styles.map((s) => {
+        if (s.key == "style") {
+          return <style {...s.props} dangerouslySetInnerHTML={s.style} />;
+        } else {
+          return (
+            <script
+              {...s.props}
+              dangerouslySetInnerHTML={(s.key != null ? `${s.key} = ` : "")+s.style}
+            />
+          );
+        }
+      })}
     </>
   );
 });
