@@ -1,6 +1,8 @@
-import { component$, Slot } from "@builder.io/qwik";
+import { component$, Slot, useStyles$ } from "@builder.io/qwik";
+import styelDesktop from "./desktop.css?inline"
 
 export const Desktop = component$(() => {
+  useStyles$(styelDesktop)
   return (
     <main class="w-full md:grid md:grid-cols-12 grid-cols-none">
       <div class="w-full col-span-8 col-start-3 mt-48">
@@ -8,11 +10,6 @@ export const Desktop = component$(() => {
           <div class="flex flex-wrap">
             <div class="lg:w-2/3 w-full flex flex-col space-y-10">
               <Slot name="main" />
-              <div class="text-center mt-5">
-                <a href="/indeks" class="more">
-                  Lainnya
-                </a>
-              </div>
             </div>
             <div class="lg:w-1/3 w-full px-4">
               <Slot name="side" />

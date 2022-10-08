@@ -13,7 +13,7 @@ import { PopularDesktop } from "~/components/popular/popular-desktop";
 import { RecentDesktop } from "~/components/recent/recent-dektop";
 import { VideoDesktop } from "~/components/video/video-desktop";
 import { getRecent } from "~/controller/article";
-import { getCategory } from "~/controller/category";
+import { getCategories } from "~/controller/category";
 import { getEditorChoice, getHeadline, getPopular } from "~/controller/feature";
 import { getVideos } from "~/controller/video";
 // import { lazyLoading } from "~/utils/lazy";
@@ -45,6 +45,11 @@ export default component$(() => {
               <RecentDesktop q:slot="main" articles={val.recent[1]} />
               <VideoDesktop q:slot="main" videos={val.videos} />
               <RecentDesktop q:slot="main" articles={val.recent[2]} />
+              <div q:slot="main" class="text-center mt-5">
+                <a href="/indeks" class="more">
+                  Lainnya
+                </a>
+              </div>
               <PopularDesktop q:slot="side" popular={val.popular} />
             </Desktop>
             <FooterDesktop categories={val.categories} />
@@ -57,7 +62,7 @@ export default component$(() => {
 
 export const head: DocumentHead<any> = ({ data }) => {
   return {
-    title: "Welcome to Qwik",
+    title: process.env.WEBSITE_TITLE,
     meta: [
       {
         name: "description",
@@ -111,7 +116,7 @@ export const onGet: RequestHandler<any> = async ({ url, request }) => {
 
   const md = new MobileDetect(request.headers.get("user-agent") ?? "");
 
-  const categories = await getCategory();
+  const categories = await getCategories();
   const headline = await getHeadline();
   const recent = await getRecent();
   const editorChoice = await getEditorChoice();
