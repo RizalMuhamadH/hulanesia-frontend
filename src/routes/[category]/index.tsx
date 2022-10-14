@@ -63,19 +63,21 @@ export const onGet: RequestHandler<any> = async ({
   const categories = await getCategories();
   const popular = await getPopular();
   const articles = await getArticleByCategory(
-    params.page != undefined ? Number(params.page) : 0,
+    url.searchParams.get("page") != undefined ? Number(url.searchParams.get("page")) : 1,
     params.category,
     20
   );
+
 
   abort();
 
   return {
     categories: categories,
     category: category,
-    articles: articles,
+    articles: articles.items,
+    totalLength: articles.totalLength,
     popular: popular,
-    page: params.page,
+    page: url.searchParams.get("page") != undefined ? Number(url.searchParams.get("page")) : 1,
     url: url,
     device: {
       mobile: md.mobile() ?? "",

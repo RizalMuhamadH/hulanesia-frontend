@@ -23,6 +23,58 @@
   @apply inline-block border font-semibold border-main-blue px-5 py-2 text-main-blue rounded-full hover:bg-main-blue hover:text-white;
 }
 
+.overlay-box{
+  @apply fixed inset-0 z-[150] text-gray-400 overflow-y-auto;
+}
+
+.overlay-box_bg {
+  @apply fixed inset-0 bg-gray-900 bg-opacity-80;
+}
+
+.btn-close {
+  @apply absolute top-8 right-8 text-gray-400;
+}
+
+.search{
+  @apply relative min-h-screen flex items-start justify-center p-4 lg:py-20;
+}
+
+.search_bg {
+  @apply relative max-w-2xl w-full pt-8 px-8 pb-16;
+}
+
+.search_box {
+  @apply w-full bg-white px-2 py-2 rounded-lg overflow-hidden transition-all duration-500;
+}
+
+.search_box__container {
+  @apply relative flex items-center;
+}
+
+.search_icon {
+  @apply mt-1 w-6 h-6 text-gray-500 pointer-events-none;
+}
+
+.search_input {
+  @apply flex-1 w-full pl-3 pr-4 py-1 tracking-wide text-lg text-gray-600 placeholder-gray-500 bg-transparent focus:outline-none;
+}
+
+.history {
+  @apply border-t-[1px] mt-2 pt-5 border-opacity-80;
+}
+
+.history_label {
+  @apply flex flex-row justify-between px-1;
+}
+
+.history_items {
+  @apply flex flex-wrap mt-2;
+}
+
+.history_item {
+  @apply inline-block border border-main-blue px-3 text-main-blue rounded hover:bg-main-blue hover:text-white mb-3 mr-3;
+}
+
 .lozad {
   opacity: 0;
 }

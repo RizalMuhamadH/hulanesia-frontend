@@ -1,5 +1,6 @@
-import { component$, useStore, useStyles$ } from "@builder.io/qwik";
+import { component$, useContext, useStore, useStyles$ } from "@builder.io/qwik";
 import moment from "moment";
+import { modal } from "~/routes/layout";
 import { Category } from "~/types/category";
 import { uriCategory } from "~/utils/formater";
 import navbarStyleDesktop from "./navbar-desktop.css?inline";
@@ -10,6 +11,9 @@ export const NavbarDesktop = component$((props: { categories: Category[] }) => {
   const state = useStore({
     date: moment().format("dddd DD MMM YYYY"),
   });
+
+
+  const search = useContext(modal);
 
   return (
     <>
@@ -88,7 +92,9 @@ export const NavbarDesktop = component$((props: { categories: Category[] }) => {
                   </div>
                 </div>
                 <div class="navbar-end">
-                  <button>
+                  <button onClick$={()=>{
+                    search.toggle = true
+                  }}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
